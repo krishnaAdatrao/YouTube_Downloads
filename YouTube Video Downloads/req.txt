@@ -1,0 +1,43 @@
+Related to the _tkinter module after trying to install tcl-tk. However, you also encountered an error when trying to install tcl-tk under the /opt/homebrew prefix.
+
+If you are running on a Mac with an Apple M1 chip, which uses the ARM architecture. When installing packages with Homebrew, you may need to specify the arch flag to install packages for the correct architecture.
+
+To install tcl-tk under the /usr/local prefix, which is recommended for the M1 chip, you can try the following steps:
+
+Uninstall tcl-tk if it is already installed:
+
+- brew uninstall tcl-tk
+
+Install Homebrew for the M1 chip:
+
+- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Add the Homebrew installation path to your PATH environment variable by adding the following line to your shell profile file (e.g. ~/.bash_profile or ~/.zshrc):
+
+- eval $(/opt/homebrew/bin/brew shellenv)
+
+Install tcl-tk with the arch flag:
+
+- arch -arm64 brew install tcl-tk
+
+Test your installation by running your Python script again:
+
+- python3 YT_Download.py
+
+If you still encounter issues related to _tkinter after following these steps, you may need to install a separate version of Python that includes support for tkinter on the M1 chip. You could try installing python-tk with Homebrew and then running your script with the arch flag:
+
+- arch -arm64 brew install python-tk
+- arch -arm64 python3 YT_Download.py
+
+For Pytube module in your ARM Python environment. You can try installing it using pip by running the following command in your terminal:
+
+- pip3 install pytube
+
+If you encounter any permission errors while installing, you can try using the --user flag to install the package locally for your user:
+
+- pip3 install --user pytube
+
+After installation, you can try running your script again using the arch -arm64 prefix to use the ARM Python environment:
+
+- arch -arm64 python3 YT_Download.py
+
